@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blinky - Livraison de nourriture marocaine</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* Variables CSS */
+        :root {
+            --primary-red: #e53e3e;
+            --primary-white: #ffffff;
+            --secondary-red: #c53030;
+            --light-red: #fed7d7;
+            --dark-red: #9b2c2c;
+            --gray-100: #f7fafc;
+            --gray-200: #edf2f7;
+            --gray-300: #e2e8f0;
+            --gray-500: #a0aec0;
+            --gray-700: #4a5568;
+            --gray-900: #1a202c;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--gray-900);
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: var(--primary-white);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-red);
+            border-radius: 8px;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-red);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--gray-700);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-red);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 16px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-red);
+            color: var(--primary-white);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-red);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-red) 0%, var(--secondary-red) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            z-index: 2;
+            position: relative;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--primary-white);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-highlight {
+            color: #FFD700;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+            margin-bottom: 2.5rem;
+            max-width: 500px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary-white);
+            border: 2px solid var(--primary-white);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-white);
+            color: var(--primary-red);
+            transform: translateY(-2px);
+        }
+
+        /* Phone mockup */
+        .phone-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .phone {
+            width: 280px;
+            height: 560px;
+            background-color: #1a1a1a;
+            border-radius: 30px;
+            padding: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            transform: rotate(5deg);
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .app-preview {
+            padding: 20px;
+            height: 100%;
+        }
+
+        .app-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .app-logo {
+            width: 30px;
+            height: 30px;
+            background-color: var(--primary-red);
+            border-radius: 8px;
+        }
+
+        .app-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary-red);
+        }
+
+        /* Section */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-alt {
+            background-color: var(--gray-100);
+        }
+
+        .section-header {
+            margin-bottom: 4rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        .heading-lg {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .text-red {
+            color: var(--primary-red);
+        }
+
+        .text-lg {
+            font-size: 1.25rem;
+            line-height: 1.6;
+        }
+
+        .text-gray {
+            color: var(--gray-700);
+        }
+
+        /* Grid */
+        .grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        /* Service cards */
+        .service-card {
+            background-color: var(--primary-white);
+            padding: 2.5rem 2rem;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background-color: var(--light-red);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem auto;
+            font-size: 2.5rem;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .service-description {
+            color: var(--gray-700);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .phone {
+                width: 240px;
+                height: 480px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+
+            .container {
+                padding: 0 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <div class="logo-container">
+                    <div class="logo"></div>
+                    <span class="logo-text">Blinky</span>
+                </div>
+                <div class="nav-links">
+                    <a href="#services" class="nav-link">Services</a>
+                    <a href="#zones" class="nav-link">Zones de livraison</a>
+                    <a href="#partenaires" class="nav-link">Partenaires</a>
+                    <a href="#inscription" class="btn btn-primary">Devenir partenaire</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div>
+                    <h1 class="hero-title animate-fade-in-up">
+                        Savourez le <span class="hero-highlight">Maroc</span>...<br>
+                        en un clic
+                    </h1>
+                    <p class="hero-subtitle animate-fade-in-up">
+                        Blinky est la première application marocaine de livraison de nourriture qui vous connecte 
+                        aux meilleurs restaurants locaux. Commandez vos plats préférés et recevez-les rapidement, 
+                        avec professionnalisme et authenticité.
+                    </p>
+                    <div class="hero-buttons animate-fade-in-up">
+                        <a href="#" class="btn btn-primary">
+                            📱 Télécharger sur Google Play
+                        </a>
+                        <a href="#" class="btn btn-outline">
+                            🍎 Télécharger sur App Store
+                        </a>
+                    </div>
+                </div>
+                <div class="phone-container">
+                    <div class="phone animate-float">
+                        <div class="phone-screen">
+                            <div class="app-preview">
+                                <div class="app-header">
+                                    <div class="app-logo"></div>
+                                    <span class="app-name">Blinky</span>
+                                </div>
+                                <div style="background-color: #f5f5f5; padding: 12px; border-radius: 12px; margin-bottom: 20px;">
+                                    <span style="color: #999; font-size: 14px;">🔍 Rechercher un restaurant...</span>
+                                </div>
+                                <div style="display: flex; gap: 10px; margin-bottom: 20px;">
+                                    <div style="background-color: var(--light-red); color: var(--primary-red); padding: 8px 12px; border-radius: 20px; font-size: 12px;">🥘 Traditionnel</div>
+                                    <div style="background-color: var(--light-red); color: var(--primary-red); padding: 8px 12px; border-radius: 20px; font-size: 12px;">🍔 Fast Food</div>
+                                </div>
+                                <div style="background-color: #fff; border-radius: 12px; padding: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                                    <div style="width: 100%; height: 60px; background-color: #e0e0e0; border-radius: 8px; margin-bottom: 10px;"></div>
+                                    <h4 style="font-size: 14px; font-weight: 600; margin-bottom: 4px;">Restaurant Al Fassia</h4>
+                                    <p style="font-size: 12px; color: #666; margin-bottom: 6px;">Cuisine marocaine • ⭐ 4.8</p>
+                                    <p style="font-size: 11px; color: #999;">🚚 25-35 min</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section section-alt" id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="heading-lg">
+                    Des saveurs <span class="text-red">authentiques</span>, une expérience moderne
+                </h2>
+                <p class="text-lg text-gray">
+                    Blinky révolutionne la livraison de nourriture au Maroc en connectant les amateurs de cuisine 
+                    locale aux meilleurs restaurants de leur région.
+                </p>
+            </div>
+
+            <div class="grid grid-3">
+                <div class="service-card animate-fade-in-up">
+                    <div class="service-icon">🍽️</div>
+                    <h3 class="service-title">Commandez votre repas</h3>
+                    <p class="service-description">
+                        Découvrez une sélection authentique de restaurants marocains et commandez vos plats préférés en quelques clics.
+                    </p>
+                </div>
+                <div class="service-card animate-fade-in-up">
+                    <div class="service-icon">🚚</div>
+                    <h3 class="service-title">Livraison rapide</h3>
+                    <p class="service-description">
+                        Nos livreurs expérimentés vous apportent vos commandes chaudes et fraîches directement à votre porte.
+                    </p>
+                </div>
+                <div class="service-card animate-fade-in-up">
+                    <div class="service-icon">💳</div>
+                    <h3 class="service-title">Paiement sécurisé</h3>
+                    <p class="service-description">
+                        Payez facilement et en toute sécurité avec plusieurs options de paiement adaptées au marché marocain.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer simple -->
+    <footer style="background-color: var(--gray-900); color: var(--primary-white); padding: 3rem 0; text-align: center;">
+        <div class="container">
+            <div class="logo-container" style="justify-content: center; margin-bottom: 2rem;">
+                <div class="logo"></div>
+                <span class="logo-text">Blinky</span>
+            </div>
+            <p style="color: var(--gray-300); margin-bottom: 2rem;">
+                La première application marocaine de livraison de nourriture qui vous connecte aux meilleurs restaurants locaux.
+            </p>
+            <div style="display: flex; justify-content: center; gap: 2rem; margin-bottom: 2rem;">
+                <a href="#" style="color: var(--gray-300); text-decoration: none;">À propos</a>
+                <a href="#" style="color: var(--gray-300); text-decoration: none;">Contact</a>
+                <a href="#" style="color: var(--gray-300); text-decoration: none;">Conditions</a>
+                <a href="#" style="color: var(--gray-300); text-decoration: none;">Confidentialité</a>
+            </div>
+            <p style="color: var(--gray-500); font-size: 0.9rem;">
+                © 2025 Blinky. Tous droits réservés. Fait avec ❤️ au Maroc.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling pour les liens de navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animation au scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observer tous les éléments avec animation
+        document.querySelectorAll('.animate-fade-in-up').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            observer.observe(el);
+        });
+
+        // Effet parallax simple pour le hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
+
