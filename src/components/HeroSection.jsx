@@ -4,22 +4,22 @@ const HeroSection = () => {
   return (
     <section style={styles.hero} id="hero">
       <div className="container">
-        <div style={styles.heroContent}>
-          <div style={styles.textContent}>
-            <h1 style={styles.title} className="animate-fade-in-up">
+        <div className="hero-content" style={styles.heroContent}>
+          <div className="text-content" style={styles.textContent}>
+            <h1 style={styles.title} className="title animate-fade-in-up">
               Savourez le <span style={styles.highlight}>Maroc</span>...
               <br />
               en un clic
             </h1>
-            <p style={styles.subtitle} className="animate-fade-in-up">
+            <p style={styles.subtitle} className="subtitle animate-fade-in-up">
               Blinky est la première application marocaine de livraison de nourriture qui vous connecte 
               aux meilleurs restaurants locaux. Commandez vos plats préférés et recevez-les rapidement, 
               avec professionnalisme et authenticité.
             </p>
-            <div style={styles.ctaButtons} className="animate-fade-in-up">
+            <div style={styles.ctaButtons} className="cta-buttons animate-fade-in-up">
               <a 
                 href="#" 
-                className="btn btn-primary"
+                className="btn btn-primary app-button"
                 style={styles.appButton}
               >
                 <img 
@@ -31,7 +31,7 @@ const HeroSection = () => {
               </a>
               <a 
                 href="#" 
-                className="btn btn-outline"
+                className="btn btn-outline app-button"
                 style={styles.appButton}
               >
                 <img 
@@ -45,7 +45,7 @@ const HeroSection = () => {
           </div>
           <div style={styles.imageContent}>
             <div style={styles.phoneContainer}>
-              <div style={styles.phone}>
+              <div className="phone" style={styles.phone}>
                 <div style={styles.phoneScreen}>
                   <div style={styles.appPreview}>
                     <div style={styles.appHeader}>
@@ -289,7 +289,7 @@ const styles = {
   },
 };
 
-// Ajouter les animations CSS
+// Responsive and animation CSS
 const floatAnimation = `
   @keyframes float {
     0%, 100% {
@@ -350,7 +350,6 @@ const floatAnimation = `
   }
 `;
 
-// Injecter les styles CSS
 if (typeof document !== 'undefined') {
   const styleSheet = document.createElement('style');
   styleSheet.textContent = floatAnimation;
@@ -358,4 +357,3 @@ if (typeof document !== 'undefined') {
 }
 
 export default HeroSection;
-

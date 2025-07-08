@@ -61,7 +61,7 @@ const AppPromotion = () => {
     <section className="section" id="application">
       <div className="container">
         {/* En-tête de section */}
-        <div style={styles.sectionHeader}>
+        <div className="section-header" style={styles.sectionHeader}>
           <h2 className="heading-lg text-center">
             L'application <span className="text-red">Blinky</span> dans votre poche
           </h2>
@@ -72,12 +72,12 @@ const AppPromotion = () => {
         </div>
 
         {/* Section principale avec téléphones */}
-        <div style={styles.mainSection}>
-          <div style={styles.phonesContainer}>
+        <div className="main-section" style={styles.mainSection}>
+          <div className="phones-container" style={styles.phonesContainer}>
             {/* Téléphone principal */}
-            <div style={styles.mainPhone}>
-              <div style={styles.phoneFrame}>
-                <div style={styles.phoneScreen}>
+            <div className="main-phone" style={styles.mainPhone}>
+              <div className="phone-frame" style={styles.phoneFrame}>
+                <div className="phone-screen" style={styles.phoneScreen}>
                   <div style={styles.appInterface}>
                     {/* Barre de statut */}
                     <div style={styles.statusBar}>
@@ -144,10 +144,10 @@ const AppPromotion = () => {
             </div>
 
             {/* Téléphones secondaires */}
-            <div style={styles.secondaryPhones}>
-              <div style={{...styles.secondaryPhone, ...styles.phone2}}>
-                <div style={styles.phoneFrame}>
-                  <div style={styles.phoneScreen}>
+            <div className="secondary-phones" style={styles.secondaryPhones}>
+              <div className="secondary-phone phone2" style={{...styles.secondaryPhone, ...styles.phone2}}>
+                <div className="phone-frame" style={styles.phoneFrame}>
+                  <div className="phone-screen" style={styles.phoneScreen}>
                     <div style={styles.orderScreen}>
                       <div style={styles.orderHeader}>
                         <h4 style={styles.orderTitle}>Votre commande</h4>
@@ -169,9 +169,9 @@ const AppPromotion = () => {
                 </div>
               </div>
               
-              <div style={{...styles.secondaryPhone, ...styles.phone3}}>
-                <div style={styles.phoneFrame}>
-                  <div style={styles.phoneScreen}>
+              <div className="secondary-phone phone3" style={{...styles.secondaryPhone, ...styles.phone3}}>
+                <div className="phone-frame" style={styles.phoneFrame}>
+                  <div className="phone-screen" style={styles.phoneScreen}>
                     <div style={styles.trackingScreen}>
                       <div style={styles.trackingHeader}>
                         <h4 style={styles.trackingTitle}>Suivi de commande</h4>
@@ -198,7 +198,7 @@ const AppPromotion = () => {
           </div>
 
           {/* Contenu textuel */}
-          <div style={styles.contentSection}>
+          <div className="content-section" style={styles.contentSection}>
             <h3 className="heading-md">
               Une expérience culinaire <span className="text-red">révolutionnaire</span>
             </h3>
@@ -209,9 +209,9 @@ const AppPromotion = () => {
             </p>
             
             {/* Fonctionnalités */}
-            <div style={styles.featuresList}>
+            <div className="features-list" style={styles.featuresList}>
               {features.map((feature, index) => (
-                <div key={index} style={styles.featureItem}>
+                <div key={index} className="feature-item" style={styles.featureItem}>
                   <div style={styles.featureIcon}>{feature.icon}</div>
                   <div style={styles.featureContent}>
                     <h4 style={styles.featureTitle}>{feature.title}</h4>
@@ -222,7 +222,7 @@ const AppPromotion = () => {
             </div>
             
             {/* Boutons de téléchargement */}
-            <div style={styles.downloadButtons}>
+            <div className="download-buttons" style={styles.downloadButtons}>
               <a href="#" className="btn btn-primary" style={styles.downloadBtn}>
                 <img 
                   src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTMgMjBIMjFWMjJIM1YyMFpNMyAySDIxVjRIM1YyWk0zIDEwSDIxVjEySDNWMTBaTTMgMTRIMjFWMTZIM1YxNFpNMyA2SDIxVjhIM1Y2WiIgZmlsbD0iY3VycmVudENvbG9yIi8+Cjwvc3ZnPgo=" 
@@ -244,14 +244,14 @@ const AppPromotion = () => {
         </div>
 
         {/* Section des captures d'écran */}
-        <div style={styles.screenshotsSection}>
+        <div className="screenshots-section" style={styles.screenshotsSection}>
           <h3 className="heading-md text-center" style={styles.screenshotsTitle}>
             Découvrez l'interface de l'application
           </h3>
-          <div className="grid grid-4" style={styles.screenshotsGrid}>
+          <div className="screenshots-grid" style={styles.screenshotsGrid}>
             {screenshots.map((screenshot) => (
-              <div key={screenshot.id} style={styles.screenshotCard}>
-                <div style={styles.screenshotImage}>
+              <div key={screenshot.id} className="screenshot-card" style={styles.screenshotCard}>
+                <div className="screenshot-image" style={styles.screenshotImage}>
                   <span style={styles.screenshotNumber}>{screenshot.id}</span>
                 </div>
                 <h4 style={styles.screenshotTitle}>{screenshot.title}</h4>
@@ -616,6 +616,8 @@ const styles = {
   },
   screenshotsGrid: {
     gap: '2rem',
+    display: 'grid',
+    gridTemplateColumns: 'repeat(4, 1fr)',
   },
   screenshotCard: {
     textAlign: 'center',
@@ -648,72 +650,63 @@ const styles = {
   },
 };
 
-// Styles CSS pour les animations et responsive
 const appPromotionStyles = `
-  @media (max-width: 768px) {
+  @media (max-width: 1080px) {
+    .screenshots-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+  }
+  @media (max-width: 900px) {
     .main-section {
       grid-template-columns: 1fr !important;
       gap: 2rem !important;
       text-align: center !important;
     }
-    
     .phones-container {
       height: 400px !important;
     }
-    
     .phone-frame {
       width: 200px !important;
       height: 400px !important;
     }
-    
     .secondary-phone {
       display: none !important;
     }
-    
     .content-section {
       text-align: center !important;
     }
-    
     .features-list {
       grid-template-columns: 1fr !important;
+      display: grid !important;
     }
-    
     .download-buttons {
       justify-content: center !important;
     }
-    
     .screenshots-grid {
       grid-template-columns: repeat(2, 1fr) !important;
     }
   }
-  
   @media (max-width: 480px) {
     .screenshots-grid {
       grid-template-columns: 1fr !important;
     }
-    
     .download-buttons {
       flex-direction: column !important;
     }
-    
     .phone-frame {
-      width: 180px !important;
-      height: 360px !important;
+      width: 150px !important;
+      height: 300px !important;
     }
   }
-  
   .main-phone {
     animation: float 6s ease-in-out infinite;
   }
-  
   .phone2 {
     animation: float 6s ease-in-out infinite 2s;
   }
-  
   .phone3 {
     animation: float 6s ease-in-out infinite 4s;
   }
-  
   @keyframes float {
     0%, 100% {
       transform: translateY(0px) scale(0.8) rotate(-10deg);
@@ -724,12 +717,11 @@ const appPromotionStyles = `
   }
 `;
 
-// Injecter les styles CSS
-if (typeof document !== 'undefined') {
+if (typeof document !== 'undefined' && !document.getElementById('app-promo-css')) {
   const styleSheet = document.createElement('style');
+  styleSheet.id = 'app-promo-css';
   styleSheet.textContent = appPromotionStyles;
   document.head.appendChild(styleSheet);
 }
 
 export default AppPromotion;
-

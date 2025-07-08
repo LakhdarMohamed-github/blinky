@@ -113,8 +113,8 @@ const RestaurantSignUpForm = () => {
     return (
       <section className="section section-alt" id="inscription">
         <div className="container">
-          <div style={styles.successContainer}>
-            <div style={styles.successCard}>
+          <div className="success-container" style={styles.successContainer}>
+            <div className="success-card" style={styles.successCard}>
               <div style={styles.successIcon}>✅</div>
               <h2 className="heading-lg text-center">
                 Demande envoyée avec succès !
@@ -129,7 +129,7 @@ const RestaurantSignUpForm = () => {
               </p>
               <div style={styles.nextSteps}>
                 <h3 style={styles.nextStepsTitle}>Prochaines étapes :</h3>
-                <ul style={styles.stepsList}>
+                <ul className="steps-list" style={styles.stepsList}>
                   <li>📞 Appel de notre équipe commerciale</li>
                   <li>📋 Validation de votre dossier</li>
                   <li>📱 Formation à l'utilisation de la plateforme</li>
@@ -169,7 +169,7 @@ const RestaurantSignUpForm = () => {
     <section className="section section-alt" id="inscription">
       <div className="container">
         {/* En-tête de section */}
-        <div style={styles.sectionHeader}>
+        <div className="section-header" style={styles.sectionHeader}>
           <h2 className="heading-lg text-center">
             Rejoignez le réseau <span className="text-red">Blinky</span>
           </h2>
@@ -179,15 +179,15 @@ const RestaurantSignUpForm = () => {
           </p>
         </div>
 
-        <div style={styles.mainContent}>
+        <div className="main-content" style={styles.mainContent}>
           {/* Avantages */}
-          <div style={styles.benefitsSection}>
+          <div className="benefits-section" style={styles.benefitsSection}>
             <h3 className="heading-md text-center" style={styles.benefitsTitle}>
               Pourquoi choisir Blinky ?
             </h3>
-            <div className="grid grid-3" style={styles.benefitsGrid}>
+            <div className="benefits-grid grid grid-3" style={styles.benefitsGrid}>
               {benefits.map((benefit, index) => (
-                <div key={index} style={styles.benefitCard}>
+                <div key={index} className="benefit-card" style={styles.benefitCard}>
                   <div style={styles.benefitIcon}>{benefit.icon}</div>
                   <h4 style={styles.benefitTitle}>{benefit.title}</h4>
                   <p style={styles.benefitDescription}>{benefit.description}</p>
@@ -197,22 +197,24 @@ const RestaurantSignUpForm = () => {
           </div>
 
           {/* Formulaire */}
-          <div style={styles.formSection}>
-            <div style={styles.formContainer}>
+          <div className="form-section" style={styles.formSection}>
+            <div className="form-container" style={styles.formContainer}>
               {/* Indicateur de progression */}
-              <div style={styles.progressIndicator}>
-                <div style={styles.progressBar}>
+              <div className="progress-indicator" style={styles.progressIndicator}>
+                <div className="progress-bar" style={styles.progressBar}>
                   <div 
+                    className="progress-fill"
                     style={{
                       ...styles.progressFill,
                       width: `${(currentStep / 3) * 100}%`
                     }}
                   ></div>
                 </div>
-                <div style={styles.stepIndicators}>
+                <div className="step-indicators" style={styles.stepIndicators}>
                   {[1, 2, 3].map((step) => (
                     <div
                       key={step}
+                      className={`step-indicator${currentStep >= step ? ' active' : ''}`}
                       style={{
                         ...styles.stepIndicator,
                         ...(currentStep >= step ? styles.stepActive : {})
@@ -227,9 +229,9 @@ const RestaurantSignUpForm = () => {
               <form onSubmit={handleSubmit} style={styles.form}>
                 {/* Étape 1: Informations de base */}
                 {currentStep === 1 && (
-                  <div style={styles.formStep}>
+                  <div className="form-step" style={styles.formStep}>
                     <h3 style={styles.stepTitle}>Informations de base</h3>
-                    <div style={styles.formGrid}>
+                    <div className="form-grid" style={styles.formGrid}>
                       <div style={styles.formGroup}>
                         <label style={styles.label}>Nom du restaurant *</label>
                         <input
@@ -237,6 +239,7 @@ const RestaurantSignUpForm = () => {
                           name="restaurantName"
                           value={formData.restaurantName}
                           onChange={handleInputChange}
+                          className="input"
                           style={styles.input}
                           placeholder="Ex: Restaurant Al Fassia"
                           required
@@ -249,6 +252,7 @@ const RestaurantSignUpForm = () => {
                           name="ownerName"
                           value={formData.ownerName}
                           onChange={handleInputChange}
+                          className="input"
                           style={styles.input}
                           placeholder="Votre nom complet"
                           required
@@ -261,6 +265,7 @@ const RestaurantSignUpForm = () => {
                           name="email"
                           value={formData.email}
                           onChange={handleInputChange}
+                          className="input"
                           style={styles.input}
                           placeholder="votre@email.com"
                           required
@@ -273,6 +278,7 @@ const RestaurantSignUpForm = () => {
                           name="phone"
                           value={formData.phone}
                           onChange={handleInputChange}
+                          className="input"
                           style={styles.input}
                           placeholder="+212 6XX XXX XXX"
                           required
@@ -284,15 +290,16 @@ const RestaurantSignUpForm = () => {
 
                 {/* Étape 2: Localisation et type */}
                 {currentStep === 2 && (
-                  <div style={styles.formStep}>
+                  <div className="form-step" style={styles.formStep}>
                     <h3 style={styles.stepTitle}>Localisation et spécialités</h3>
-                    <div style={styles.formGrid}>
+                    <div className="form-grid" style={styles.formGrid}>
                       <div style={styles.formGroup}>
                         <label style={styles.label}>Adresse complète *</label>
                         <textarea
                           name="address"
                           value={formData.address}
                           onChange={handleInputChange}
+                          className="textarea"
                           style={styles.textarea}
                           placeholder="Adresse complète de votre restaurant"
                           rows="3"
@@ -305,6 +312,7 @@ const RestaurantSignUpForm = () => {
                           name="city"
                           value={formData.city}
                           onChange={handleInputChange}
+                          className="select"
                           style={styles.select}
                           required
                         >
@@ -320,6 +328,7 @@ const RestaurantSignUpForm = () => {
                           name="cuisineType"
                           value={formData.cuisineType}
                           onChange={handleInputChange}
+                          className="select"
                           style={styles.select}
                           required
                         >
@@ -335,6 +344,7 @@ const RestaurantSignUpForm = () => {
                           name="description"
                           value={formData.description}
                           onChange={handleInputChange}
+                          className="textarea"
                           style={styles.textarea}
                           placeholder="Décrivez votre restaurant, vos spécialités..."
                           rows="3"
@@ -346,9 +356,9 @@ const RestaurantSignUpForm = () => {
 
                 {/* Étape 3: Services et confirmation */}
                 {currentStep === 3 && (
-                  <div style={styles.formStep}>
+                  <div className="form-step" style={styles.formStep}>
                     <h3 style={styles.stepTitle}>Services et confirmation</h3>
-                    <div style={styles.checkboxGroup}>
+                    <div className="checkbox-group" style={styles.checkboxGroup}>
                       <label style={styles.checkboxLabel}>
                         <input
                           type="checkbox"
@@ -391,7 +401,7 @@ const RestaurantSignUpForm = () => {
                     
                     <div style={styles.summarySection}>
                       <h4 style={styles.summaryTitle}>Récapitulatif de votre inscription</h4>
-                      <div style={styles.summaryGrid}>
+                      <div className="summary-grid" style={styles.summaryGrid}>
                         <div style={styles.summaryItem}>
                           <strong>Restaurant:</strong> {formData.restaurantName}
                         </div>
@@ -410,7 +420,7 @@ const RestaurantSignUpForm = () => {
                 )}
 
                 {/* Boutons de navigation */}
-                <div style={styles.formActions}>
+                <div className="form-actions" style={styles.formActions}>
                   {currentStep > 1 && (
                     <button
                       type="button"
@@ -472,6 +482,8 @@ const styles = {
   },
   benefitsGrid: {
     gap: '2rem',
+    display: 'grid',
+    gridTemplateColumns: 'repeat(3, 1fr)',
   },
   benefitCard: {
     backgroundColor: 'var(--primary-white)',
@@ -624,6 +636,7 @@ const styles = {
   link: {
     color: 'var(--primary-red)',
     textDecoration: 'none',
+    marginLeft: '3px'
   },
   summarySection: {
     backgroundColor: 'var(--gray-100)',
@@ -704,72 +717,67 @@ const styles = {
   },
 };
 
-// Styles CSS pour les interactions
+// Styles CSS pour les interactions et responsive
 const formStyles = `
   .input:focus,
   .textarea:focus,
   .select:focus {
     border-color: var(--primary-red) !important;
   }
-  
+
   .benefit-card:hover {
     transform: translateY(-4px);
   }
-  
+
   .link:hover {
     text-decoration: underline !important;
   }
-  
+
   .steps-list li {
     padding: 0.5rem 0;
     border-bottom: 1px solid var(--gray-300);
   }
-  
   .steps-list li:last-child {
     border-bottom: none;
   }
-  
-  @media (max-width: 768px) {
+
+  @media (max-width: 900px) {
+    .main-content {
+      grid-template-columns: 1fr !important;
+      gap: 2rem !important;
+    }
+    .form-grid, .summary-grid {
+      grid-template-columns: 1fr !important;
+    }
     .benefits-grid {
       grid-template-columns: 1fr !important;
     }
-    
-    .form-container {
-      padding: 2rem 1.5rem !important;
-    }
-    
-    .form-grid,
-    .summary-grid {
-      grid-template-columns: 1fr !important;
-    }
-    
     .form-actions {
       flex-direction: column !important;
     }
-    
     .step-indicators {
       justify-content: center !important;
       gap: 2rem !important;
     }
+    .form-container {
+      padding: 2rem 1.5rem !important;
+    }
   }
-  
   @media (max-width: 480px) {
     .form-container {
       padding: 1.5rem 1rem !important;
     }
-    
     .success-card {
       padding: 2rem 1.5rem !important;
     }
   }
 `;
 
-// Injecter les styles CSS
-if (typeof document !== 'undefined') {
+if (typeof document !== 'undefined' && !document.getElementById('restaurant-form-css')) {
   const styleSheet = document.createElement('style');
+  styleSheet.id = 'restaurant-form-css';
   styleSheet.textContent = formStyles;
   document.head.appendChild(styleSheet);
 }
 
 export default RestaurantSignUpForm;
-

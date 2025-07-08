@@ -4,23 +4,24 @@ const FAQ = () => {
   const [openQuestion, setOpenQuestion] = useState(null);
 
   const faqData = [
+    // ... (same as your list)
     {
       id: 1,
       category: 'Général',
-      question: 'Qu\'est-ce que Blinky ?',
+      question: "Qu'est-ce que Blinky ?",
       answer: 'Blinky est la première application marocaine de livraison de nourriture qui vous connecte aux meilleurs restaurants locaux. Nous proposons une expérience moderne et authentique pour commander vos plats préférés et les recevoir rapidement chez vous.'
     },
     {
       id: 2,
       category: 'Livraison',
       question: 'Dans quelles villes Blinky est-il disponible ?',
-      answer: 'Blinky est actuellement disponible à Casablanca, Rabat, Marrakech, Fès, Tanger et Agadir. Nous étendons progressivement notre service à d\'autres villes marocaines. Vous pouvez vérifier la disponibilité dans votre zone via notre application.'
+      answer: "Blinky est actuellement disponible à Casablanca, Rabat, Marrakech, Fès, Tanger et Agadir. Nous étendons progressivement notre service à d'autres villes marocaines. Vous pouvez vérifier la disponibilité dans votre zone via notre application."
     },
     {
       id: 3,
       category: 'Commande',
       question: 'Comment passer une commande sur Blinky ?',
-      answer: 'C\'est très simple ! Téléchargez l\'application, créez votre compte, parcourez les restaurants disponibles dans votre zone, sélectionnez vos plats, ajoutez-les au panier, choisissez votre mode de paiement et confirmez votre commande. Vous recevrez une confirmation et pourrez suivre votre livraison en temps réel.'
+      answer: "C'est très simple ! Téléchargez l'application, créez votre compte, parcourez les restaurants disponibles dans votre zone, sélectionnez vos plats, ajoutez-les au panier, choisissez votre mode de paiement et confirmez votre commande. Vous recevrez une confirmation et pourrez suivre votre livraison en temps réel."
     },
     {
       id: 4,
@@ -32,37 +33,37 @@ const FAQ = () => {
       id: 5,
       category: 'Livraison',
       question: 'Combien de temps prend une livraison ?',
-      answer: 'Le temps de livraison varie généralement entre 25 et 45 minutes selon la distance, le restaurant choisi et l\'affluence. Vous pouvez voir le temps estimé avant de confirmer votre commande et suivre la progression en temps réel.'
+      answer: "Le temps de livraison varie généralement entre 25 et 45 minutes selon la distance, le restaurant choisi et l'affluence. Vous pouvez voir le temps estimé avant de confirmer votre commande et suivre la progression en temps réel."
     },
     {
       id: 6,
       category: 'Livraison',
       question: 'Y a-t-il des frais de livraison ?',
-      answer: 'Les frais de livraison varient selon la distance et le restaurant. Certains restaurants offrent la livraison gratuite pour les commandes dépassant un montant minimum. Les frais sont toujours affichés clairement avant la confirmation de votre commande.'
+      answer: "Les frais de livraison varient selon la distance et le restaurant. Certains restaurants offrent la livraison gratuite pour les commandes dépassant un montant minimum. Les frais sont toujours affichés clairement avant la confirmation de votre commande."
     },
     {
       id: 7,
       category: 'Commande',
       question: 'Puis-je modifier ou annuler ma commande ?',
-      answer: 'Vous pouvez modifier ou annuler votre commande dans les premières minutes après la confirmation, tant qu\'elle n\'a pas été acceptée par le restaurant. Après acceptation, contactez notre service client pour toute modification urgente.'
+      answer: "Vous pouvez modifier ou annuler votre commande dans les premières minutes après la confirmation, tant qu'elle n'a pas été acceptée par le restaurant. Après acceptation, contactez notre service client pour toute modification urgente."
     },
     {
       id: 8,
       category: 'Partenaires',
       question: 'Comment devenir restaurant partenaire ?',
-      answer: 'Pour rejoindre notre réseau de partenaires, remplissez le formulaire d\'inscription sur notre site web. Notre équipe vous contactera dans les 48 heures pour examiner votre dossier et vous accompagner dans le processus d\'intégration.'
+      answer: "Pour rejoindre notre réseau de partenaires, remplissez le formulaire d'inscription sur notre site web. Notre équipe vous contactera dans les 48 heures pour examiner votre dossier et vous accompagner dans le processus d'intégration."
     },
     {
       id: 9,
       category: 'Application',
-      question: 'L\'application Blinky est-elle gratuite ?',
-      answer: 'Oui, l\'application Blinky est entièrement gratuite à télécharger et à utiliser. Vous ne payez que pour vos commandes et les éventuels frais de livraison. Aucun abonnement ou frais cachés.'
+      question: "L'application Blinky est-elle gratuite ?",
+      answer: "Oui, l'application Blinky est entièrement gratuite à télécharger et à utiliser. Vous ne payez que pour vos commandes et les éventuels frais de livraison. Aucun abonnement ou frais cachés."
     },
     {
       id: 10,
       category: 'Support',
       question: 'Comment contacter le service client ?',
-      answer: 'Notre service client est disponible 7j/7 via l\'application (chat en direct), par email à support@blinky.ma, ou par téléphone au +212 5XX XXX XXX. Nous nous engageons à répondre rapidement à toutes vos questions.'
+      answer: "Notre service client est disponible 7j/7 via l'application (chat en direct), par email à support@blinky.ma, ou par téléphone au +212 5XX XXX XXX. Nous nous engageons à répondre rapidement à toutes vos questions."
     },
     {
       id: 11,
@@ -74,7 +75,7 @@ const FAQ = () => {
       id: 12,
       category: 'Sécurité',
       question: 'Mes données personnelles sont-elles sécurisées ?',
-      answer: 'Absolument. Nous prenons la protection de vos données très au sérieux. Toutes vos informations personnelles et de paiement sont cryptées et stockées de manière sécurisée. Nous respectons strictement la réglementation sur la protection des données.'
+      answer: "Absolument. Nous prenons la protection de vos données très au sérieux. Toutes vos informations personnelles et de paiement sont cryptées et stockées de manière sécurisée. Nous respectons strictement la réglementation sur la protection des données."
     }
   ];
 
@@ -93,7 +94,7 @@ const FAQ = () => {
     <section className="section" id="faq">
       <div className="container">
         {/* En-tête de section */}
-        <div style={styles.sectionHeader}>
+        <div className="section-header" style={styles.sectionHeader}>
           <h2 className="heading-lg text-center">
             Questions <span className="text-red">fréquentes</span>
           </h2>
@@ -104,11 +105,12 @@ const FAQ = () => {
         </div>
 
         {/* Filtres par catégorie */}
-        <div style={styles.categoryFilters}>
+        <div className="category-filters" style={styles.categoryFilters}>
           {categories.map((category) => (
             <button
               key={category}
               onClick={() => setSelectedCategory(category)}
+              className="category-button"
               style={{
                 ...styles.categoryButton,
                 ...(selectedCategory === category ? styles.categoryButtonActive : {})
@@ -120,20 +122,21 @@ const FAQ = () => {
         </div>
 
         {/* Questions et réponses */}
-        <div style={styles.faqContainer}>
-          <div style={styles.faqList}>
+        <div className="faq-container" style={styles.faqContainer}>
+          <div className="faq-list" style={styles.faqList}>
             {filteredFAQ.map((item) => (
-              <div key={item.id} style={styles.faqItem}>
+              <div key={item.id} className="faq-item" style={styles.faqItem}>
                 <button
                   onClick={() => toggleQuestion(item.id)}
+                  className="question-button"
                   style={styles.questionButton}
                   aria-expanded={openQuestion === item.id}
                 >
                   <div style={styles.questionContent}>
                     <span style={styles.categoryTag}>{item.category}</span>
-                    <h3 style={styles.questionText}>{item.question}</h3>
+                    <h3 className="question-text" style={styles.questionText}>{item.question}</h3>
                   </div>
-                  <div style={{
+                  <div className={`expand-icon${openQuestion === item.id ? " open" : ""}`} style={{
                     ...styles.expandIcon,
                     ...(openQuestion === item.id ? styles.expandIconOpen : {})
                   }}>
@@ -161,8 +164,8 @@ const FAQ = () => {
           </div>
 
           {/* Section contact */}
-          <div style={styles.contactSection}>
-            <div style={styles.contactCard}>
+          <div className="contact-section" style={styles.contactSection}>
+            <div className="contact-card" style={styles.contactCard}>
               <h3 className="heading-sm text-white">
                 Vous ne trouvez pas votre réponse ?
               </h3>
@@ -170,22 +173,22 @@ const FAQ = () => {
                 Notre équipe de support est là pour vous aider. 
                 Contactez-nous et nous vous répondrons rapidement.
               </p>
-              <div style={styles.contactMethods}>
-                <div style={styles.contactMethod}>
+              <div className="contact-methods" style={styles.contactMethods}>
+                <div className="contact-method" style={styles.contactMethod}>
                   <div style={styles.contactIcon}>📧</div>
                   <div style={styles.contactInfo}>
                     <h4 style={styles.contactTitle}>Email</h4>
                     <p style={styles.contactDetail}>support@blinky.ma</p>
                   </div>
                 </div>
-                <div style={styles.contactMethod}>
+                <div className="contact-method" style={styles.contactMethod}>
                   <div style={styles.contactIcon}>📞</div>
                   <div style={styles.contactInfo}>
                     <h4 style={styles.contactTitle}>Téléphone</h4>
                     <p style={styles.contactDetail}>+212 5XX XXX XXX</p>
                   </div>
                 </div>
-                <div style={styles.contactMethod}>
+                <div className="contact-method" style={styles.contactMethod}>
                   <div style={styles.contactIcon}>💬</div>
                   <div style={styles.contactInfo}>
                     <h4 style={styles.contactTitle}>Chat en direct</h4>
@@ -201,17 +204,17 @@ const FAQ = () => {
         </div>
 
         {/* Statistiques de support */}
-        <div style={styles.statsSection}>
-          <div className="grid grid-3" style={styles.statsGrid}>
-            <div style={styles.statCard}>
+        <div className="stats-section" style={styles.statsSection}>
+          <div className="stats-grid grid grid-3" style={styles.statsGrid}>
+            <div className="stat-card" style={styles.statCard}>
               <div style={styles.statNumber}>&lt; 2h</div>
               <div style={styles.statLabel}>Temps de réponse moyen</div>
             </div>
-            <div style={styles.statCard}>
+            <div className="stat-card" style={styles.statCard}>
               <div style={styles.statNumber}>98%</div>
               <div style={styles.statLabel}>Taux de satisfaction</div>
             </div>
-            <div style={styles.statCard}>
+            <div className="stat-card" style={styles.statCard}>
               <div style={styles.statNumber}>24/7</div>
               <div style={styles.statLabel}>Support disponible</div>
             </div>
@@ -381,6 +384,8 @@ const styles = {
   },
   statsGrid: {
     gap: '2rem',
+    display: 'grid',
+    gridTemplateColumns: 'repeat(3, 1fr)',
   },
   statCard: {
     backgroundColor: 'var(--primary-white)',
@@ -436,72 +441,61 @@ const faqStyles = `
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15) !important;
   }
   
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     .faq-container {
       grid-template-columns: 1fr !important;
       gap: 2rem !important;
     }
-    
     .contact-section {
       position: static !important;
     }
-    
     .category-filters {
       justify-content: flex-start !important;
       overflow-x: auto !important;
       padding-bottom: 1rem !important;
     }
-    
     .category-button {
       flex-shrink: 0 !important;
     }
-    
     .question-button {
       padding: 1rem !important;
     }
-    
     .question-text {
       font-size: 1rem !important;
     }
-    
     .contact-methods {
       gap: 0.75rem !important;
     }
-    
     .contact-method {
       flex-direction: column !important;
       text-align: center !important;
     }
-    
     .stats-grid {
       grid-template-columns: 1fr !important;
     }
   }
-  
   @media (max-width: 480px) {
     .question-button {
       flex-direction: column !important;
       align-items: flex-start !important;
     }
-    
     .expand-icon {
       margin-left: 0 !important;
       margin-top: 0.5rem !important;
       align-self: flex-end !important;
     }
-    
     .contact-card {
       padding: 1.5rem !important;
     }
   }
 `;
 
-// Injecter les styles CSS
-if (typeof document !== 'undefined') {
+// Inject CSS
+if (typeof document !== 'undefined' && !document.getElementById('faq-css')) {
   const styleSheet = document.createElement('style');
+  styleSheet.id = 'faq-css';
   styleSheet.textContent = faqStyles;
   document.head.appendChild(styleSheet);
 }
 
 export default FAQ;
-

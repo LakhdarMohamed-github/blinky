@@ -90,11 +90,11 @@ const Footer = () => {
 
   return (
     <footer style={styles.footer}>
-      {/* Section principale du footer */}
       <div className="container">
-        <div style={styles.footerContent}>
-          {/* Colonne de gauche - Informations de l'entreprise */}
-          <div style={styles.companySection}>
+        {/* Main Footer Content */}
+        <div className="footer-content" style={styles.footerContent}>
+          {/* Company Section */}
+          <div className="company-section" style={styles.companySection}>
             <div style={styles.logoSection}>
               <img 
                 src={blinkyLogo} 
@@ -108,11 +108,11 @@ const Footer = () => {
               aux meilleurs restaurants locaux. Savourez l'authenticité, commandez en simplicité.
             </p>
             
-            {/* Téléchargement de l'app */}
+            {/* App download */}
             <div style={styles.appDownload}>
               <h4 style={styles.downloadTitle}>Téléchargez l'application</h4>
-              <div style={styles.downloadButtons}>
-                <a href="#" style={styles.downloadButton}>
+              <div className="download-buttons" style={styles.downloadButtons}>
+                <a href="#" className="download-button" style={styles.downloadButton}>
                   <img 
                     src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTMgMjBIMjFWMjJIM1YyMFpNMyAySDIxVjRIM1YyWk0zIDEwSDIxVjEySDNWMTBaTTMgMTRIMjFWMTZIM1YxNFpNMyA2SDIxVjhIM1Y2WiIgZmlsbD0iY3VycmVudENvbG9yIi8+Cjwvc3ZnPgo=" 
                     alt="Google Play" 
@@ -123,7 +123,7 @@ const Footer = () => {
                     <span style={styles.downloadStore}>Google Play</span>
                   </div>
                 </a>
-                <a href="#" style={styles.downloadButton}>
+                <a href="#" className="download-button" style={styles.downloadButton}>
                   <img 
                     src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTMgMjBIMjFWMjJIM1YyMFpNMyAySDIxVjRIM1YyWk0zIDEwSDIxVjEySDNWMTBaTTMgMTRIMjFWMTZIM1YxNFpNMyA2SDIxVjhIM1Y2WiIgZmlsbD0iY3VycmVudENvbG9yIi8+Cjwvc3ZnPgo=" 
                     alt="App Store" 
@@ -137,14 +137,15 @@ const Footer = () => {
               </div>
             </div>
 
-            {/* Réseaux sociaux */}
-            <div style={styles.socialSection}>
+            {/* Social */}
+            <div className="social-section" style={styles.socialSection}>
               <h4 style={styles.socialTitle}>Suivez-nous</h4>
-              <div style={styles.socialLinks}>
+              <div className="social-links" style={styles.socialLinks}>
                 {socialLinks.map((social) => (
                   <a
                     key={social.name}
                     href={social.href}
+                    className="social-link"
                     style={styles.socialLink}
                     title={social.name}
                   >
@@ -155,15 +156,15 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Colonnes de liens */}
-          <div style={styles.linksSection}>
+          {/* Footer links */}
+          <div className="links-section" style={styles.linksSection}>
             {Object.entries(footerLinks).map(([key, section]) => (
-              <div key={key} style={styles.linkColumn}>
+              <div key={key} className="link-column" style={styles.linkColumn}>
                 <h4 style={styles.columnTitle}>{section.title}</h4>
                 <ul style={styles.linkList}>
                   {section.links.map((link) => (
                     <li key={link.name} style={styles.linkItem}>
-                      <a href={link.href} style={styles.link}>
+                      <a href={link.href} className="link" style={styles.link}>
                         {link.name}
                       </a>
                     </li>
@@ -174,22 +175,22 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Section des villes */}
-        <div style={styles.citiesSection}>
+        {/* Cities */}
+        <div className="cities-section" style={styles.citiesSection}>
           <h4 style={styles.citiesTitle}>Nos villes de livraison</h4>
-          <div style={styles.citiesList}>
+          <div className="cities-list" style={styles.citiesList}>
             {cities.map((city, index) => (
-              <span key={city} style={styles.cityItem}>
+              <span key={city} className="city-item" style={styles.cityItem}>
                 {city}
-                {index < cities.length - 1 && <span style={styles.citySeparator}>•</span>}
+                {index < cities.length - 1 && <span className="city-separator" style={styles.citySeparator}>•</span>}
               </span>
             ))}
           </div>
         </div>
 
         {/* Newsletter */}
-        <div style={styles.newsletterSection}>
-          <div style={styles.newsletterCard}>
+        <div className="newsletter-section" style={styles.newsletterSection}>
+          <div className="newsletter-card" style={styles.newsletterCard}>
             <div style={styles.newsletterContent}>
               <h3 style={styles.newsletterTitle}>
                 Restez informé des dernières nouveautés
@@ -198,7 +199,7 @@ const Footer = () => {
                 Recevez nos offres exclusives, nouveaux restaurants et actualités directement dans votre boîte mail.
               </p>
             </div>
-            <div style={styles.newsletterForm}>
+            <div className="newsletter-form" style={styles.newsletterForm}>
               <input
                 type="email"
                 placeholder="Votre adresse email"
@@ -211,31 +212,31 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Informations de contact */}
-        <div style={styles.contactInfo}>
-          <div style={styles.contactGrid}>
-            <div style={styles.contactItem}>
+        {/* Contact info */}
+        <div className="contact-info" style={styles.contactInfo}>
+          <div className="contact-grid" style={styles.contactGrid}>
+            <div className="contact-item" style={styles.contactItem}>
               <span style={styles.contactIcon}>📍</span>
               <div style={styles.contactDetails}>
                 <h5 style={styles.contactLabel}>Adresse</h5>
                 <p style={styles.contactText}>123 Avenue Mohammed V, Casablanca, Maroc</p>
               </div>
             </div>
-            <div style={styles.contactItem}>
+            <div className="contact-item" style={styles.contactItem}>
               <span style={styles.contactIcon}>📞</span>
               <div style={styles.contactDetails}>
                 <h5 style={styles.contactLabel}>Téléphone</h5>
                 <p style={styles.contactText}>+212 5XX XXX XXX</p>
               </div>
             </div>
-            <div style={styles.contactItem}>
+            <div className="contact-item" style={styles.contactItem}>
               <span style={styles.contactIcon}>📧</span>
               <div style={styles.contactDetails}>
                 <h5 style={styles.contactLabel}>Email</h5>
                 <p style={styles.contactText}>contact@blinky.ma</p>
               </div>
             </div>
-            <div style={styles.contactItem}>
+            <div className="contact-item" style={styles.contactItem}>
               <span style={styles.contactIcon}>🕒</span>
               <div style={styles.contactDetails}>
                 <h5 style={styles.contactLabel}>Horaires</h5>
@@ -245,24 +246,24 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Ligne de séparation */}
+        {/* Separator */}
         <div style={styles.separator}></div>
 
         {/* Footer bottom */}
-        <div style={styles.footerBottom}>
+        <div className="footer-bottom" style={styles.footerBottom}>
           <div style={styles.copyright}>
             <p style={styles.copyrightText}>
               © {currentYear} Blinky. Tous droits réservés. Fait avec ❤️ au Maroc.
             </p>
           </div>
           <div style={styles.bottomLinks}>
-            <a href="#" style={styles.bottomLink}>Conditions d'utilisation</a>
-            <span style={styles.bottomSeparator}>|</span>
-            <a href="#" style={styles.bottomLink}>Politique de confidentialité</a>
-            <span style={styles.bottomSeparator}>|</span>
-            <a href="#" style={styles.bottomLink}>Cookies</a>
+            <a href="#" className="bottom-link" style={styles.bottomLink}>Conditions d'utilisation</a>
+            <span className="bottom-separator" style={styles.bottomSeparator}>|</span>
+            <a href="#" className="bottom-link" style={styles.bottomLink}>Politique de confidentialité</a>
+            <span className="bottom-separator" style={styles.bottomSeparator}>|</span>
+            <a href="#" className="bottom-link" style={styles.bottomLink}>Cookies</a>
           </div>
-          <button onClick={scrollToTop} style={styles.backToTop}>
+          <button onClick={scrollToTop} className="back-to-top" style={styles.backToTop}>
             <span style={styles.backToTopIcon}>↑</span>
             Haut de page
           </button>
@@ -569,7 +570,7 @@ const styles = {
   },
 };
 
-// Styles CSS pour les interactions et responsive
+// Styles CSS pour interactions et responsive
 const footerStyles = `
   .download-button:hover {
     background-color: var(--gray-700) !important;
@@ -612,6 +613,7 @@ const footerStyles = `
     
     .newsletter-form {
       flex-direction: column !important;
+      gap: 1rem !important;
     }
     
     .contact-grid {
@@ -631,6 +633,7 @@ const footerStyles = `
     
     .download-buttons {
       flex-direction: column !important;
+      gap: 1rem !important;
     }
   }
   
@@ -662,12 +665,11 @@ const footerStyles = `
   }
 `;
 
-// Injecter les styles CSS
-if (typeof document !== 'undefined') {
+if (typeof document !== 'undefined' && !document.getElementById('footer-css')) {
   const styleSheet = document.createElement('style');
+  styleSheet.id = 'footer-css';
   styleSheet.textContent = footerStyles;
   document.head.appendChild(styleSheet);
 }
 
 export default Footer;
-
